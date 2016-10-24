@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import nyc.c4q.grocerystore.R;
 import nyc.c4q.grocerystore.employeeHandbook.employees.Ashique;
+import nyc.c4q.grocerystore.employeeHandbook.employees.Josiel;
 
 public class EmployeeView extends AppCompatActivity {
     public static final String EMPLOYEE_NAME = "extra.employee.name";
@@ -19,6 +20,14 @@ public class EmployeeView extends AppCompatActivity {
         String employee = getIntent().getStringExtra(EMPLOYEE_NAME);
         if(employee != null){
             // call a function
+            switch(employee){
+                case "Ashique":
+                    showAshique();
+                    break;
+                case "Josiel":
+                    showJosiel();
+                    break;
+            }
         }
     }
 
@@ -26,6 +35,16 @@ public class EmployeeView extends AppCompatActivity {
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.employee_profile,new Ashique());
+        fragmentTransaction.commit();
+
+    }
+
+//    R.id.employee_profile, new Josiel()
+
+    private void showJosiel(){
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.employee_profile, new Josiel());
         fragmentTransaction.commit();
     }
 }
